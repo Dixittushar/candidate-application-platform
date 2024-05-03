@@ -7,7 +7,7 @@ const requestOptions = {
 };
 
 export const fetchJobsData = async (offset, limit) => {
-  const raw = JSON.stringify({ offset, limit });
+  //   const raw = JSON.stringify({ offset, limit });
   const response = await fetch(
     "https://api.weekday.technology/adhoc/getSampleJdJSON",
     requestOptions

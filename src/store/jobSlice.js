@@ -19,6 +19,7 @@ const jobsSlice = createSlice({
       state.jobs.push(...action.payload);
       state.isLoading = false;
     },
+
     setFetchError(state, action) {
       state.isLoading = false;
       state.error = action.payload;

@@ -56,8 +56,8 @@ const JobCard = ({ job }) => {
           {job.company} {job.location}
         </Location>
         <Typography variant="body2">
-          Estimated Salary: ${job.minJdSalary ? job.minJdSalary : "NA"} - $
-          {job.maxJdSalary ? job.maxJdSalary : "NA"}✅
+          Estimated Salary: ${job.minJdSalary ? `${job.minJdSalary}000` : "NA"}{" "}
+          - ${job.maxJdSalary ? job.maxJdSalary : "NA"}0000✅
         </Typography>
         <Typography>About Company:</Typography>
         <Collapse in={showMore} timeout="auto" unmountOnExit>
