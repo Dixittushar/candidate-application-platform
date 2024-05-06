@@ -47,10 +47,16 @@ const ApplyButton = styled(Button)`
 const JobCard = ({ job }) => {
   const [showMore, setShowMore] = useState(false);
   const maxDescriptionLength = 100;
-  //   console.log(job);
+
   return (
     <StyledCard>
       <CardContent>
+        <img
+          src={job.logoUrl}
+          alt={job.companyName}
+          style={{ height: "70px" }}
+        />
+        <JobTitle variant="h5">Company - {job.companyName}</JobTitle>
         <JobTitle variant="h6">{job.jobRole}</JobTitle>
         <Location variant="body2">
           {job.company} {job.location}

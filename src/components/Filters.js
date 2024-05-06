@@ -1,15 +1,40 @@
 import { Box, TextField } from "@mui/material";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import JobList from "./JobList";
+import { fetchJobsData } from "../utils/api";
 
 const Filters = () => {
-  const jobs = useSelector((state) => state.jobs.jobs);
+  const dispatch = useDispatch();
+  const { jobs, hasMore } = useSelector((state) => state.jobs);
   const [filterRole, setFilterRole] = useState("");
   const [filterLocation, setFilterLocation] = useState("");
   const [filterExperience, setFilterExperience] = useState("");
 
+  useEffect(() => {
+    if (hasMore) {
+      dispatch(fetchJobsData({ limit: 10, offset: 0 }));
+    }
+  }, [dispatch, hasMore]);
   //   console.log(jobs);
+
+  //   console.log(hasMore);
+
+  window.onscroll = function () {
+    console.log(
+      window.innerHeight + document.documentElement.scrollTop !==
+        document.documentElement.offsetHeight
+    );
+    if (
+      window.innerHeight + document.documentElement.scrollTop ===
+      document.documentElement.offsetHeight
+    ) {
+      if (hasMore) {
+        dispatch(fetchJobsData({ limit: 10, offset: jobs.length }));
+      }
+    }
+  };
+
   const handleRoleChange = (e) => {
     setFilterRole(e.target.value);
   };

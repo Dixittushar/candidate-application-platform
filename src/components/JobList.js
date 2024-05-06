@@ -3,7 +3,6 @@ import { Grid } from "@mui/material";
 import "../assets/JobList.css";
 const JobList = ({ jobs, filterRole, filterLocation, filterExperience }) => {
   const filterJobs = (job) => {
-    // console.log(job);
     return (
       job.jobRole.toLowerCase().includes(filterRole.toLowerCase()) &&
       job.location.toLowerCase().includes(filterLocation.toLowerCase()) &&
